@@ -28,21 +28,31 @@ namespace OWINConsoleHost
     {
         public void Configuration(IAppBuilder app)
         {
-            // Use low level custom component instead of app.UserWelcomePage() or app.Run...
-            // We're now using a friendlier extension method if other people were to use our "HelloWorldComponent".
-            app.UseHelloWorld();
-
-            /*
-            
-            app.UseWelcomePage();
-
-            app.Run(context =>
+            // Middleware component 1
+            app.Use(async (environment, next) =>
             {
-                context.Response.ContentType = "text/plain";
-                return context.Response.WriteAsync("Hello");
+                // This executes when the request is coming in
+                foreach (var pair in environment.Environment)
+                {
+                    Console.WriteLine("{0}: {1}", pair.Key, pair.Value);
+                }
+
+                await next();
             });
-            
-             */
+
+            // Middleware component 2
+            app.Use(async (environment, next) =>
+            {
+                // This executes when the request is coming in
+                Console.WriteLine("Requesting: " + environment.Request.Path);
+                await next();
+
+                // This executes when the response is going out
+                Console.WriteLine("Response: " + environment.Response.StatusCode);
+            });
+
+            // Note that our HelloWorldComponent selfishly doesn't await next, so if we had this before middleware component 2, then component 2 would never execute.
+            app.UseHelloWorld();
         }
     }
 
