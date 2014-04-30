@@ -29,7 +29,8 @@ namespace OWINConsoleHost
         public void Configuration(IAppBuilder app)
         {
             // Use low level custom component instead of app.UserWelcomePage() or app.Run...
-            app.Use<HellowWorldComponent>();
+            // We're now using a friendlier extension method if other people were to use our "HelloWorldComponent".
+            app.UseHelloWorld();
 
             /*
             
@@ -42,6 +43,14 @@ namespace OWINConsoleHost
             });
             
              */
+        }
+    }
+
+    public static class AppBuilderExtensions
+    {
+        public static void UseHelloWorld(this IAppBuilder app)
+        {
+            app.Use<HellowWorldComponent>();
         }
     }
 
