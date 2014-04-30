@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using System.Web.Http;
 using Microsoft.Owin.Hosting;
 using Owin;
 
@@ -28,19 +29,6 @@ namespace OWINConsoleHost
     {
         public void Configuration(IAppBuilder app)
         {
-            // Middleware component 1
-            app.Use(async (environment, next) =>
-            {
-                // This executes when the request is coming in
-                foreach (var pair in environment.Environment)
-                {
-                    Console.WriteLine("{0}: {1}", pair.Key, pair.Value);
-                }
-
-                await next();
-            });
-
-            // Middleware component 2
             app.Use(async (environment, next) =>
             {
                 // This executes when the request is coming in
@@ -51,8 +39,21 @@ namespace OWINConsoleHost
                 Console.WriteLine("Response: " + environment.Response.StatusCode);
             });
 
-            // Note that our HelloWorldComponent selfishly doesn't await next, so if we had this before middleware component 2, then component 2 would never execute.
+            ConfigureWebApi(app);
+
             app.UseHelloWorld();
+        }
+
+        private void ConfigureWebApi(IAppBuilder app)
+        {
+            var config = new HttpConfiguration();
+            config.Routes.MapHttpRoute(
+                "DefaultApiRoute",
+                "api/{controller}/{id}",
+                new {id = RouteParameter.Optional}
+                );
+
+            app.UseWebApi(config);
         }
     }
 
