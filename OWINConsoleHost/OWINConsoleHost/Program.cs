@@ -13,7 +13,7 @@ namespace OWINConsoleHost
         static void Main(string[] args)
         {
             var uri = "http://localhost:8082";
-            using (WebApp.Start<Startup1>(uri))
+            using (WebApp.Start<Startup>(uri))
             {
                 Console.WriteLine("Started.");
                 Console.ReadKey();
@@ -23,15 +23,17 @@ namespace OWINConsoleHost
         }
     }
 
-    public class Startup1
+    public class Startup
     {
         public void Configuration(IAppBuilder app)
         {
-            app.Run(context =>
-            {
-                context.Response.ContentType = "text/plain";
-                return context.Response.WriteAsync("Hello");
-            });
+            app.UseWelcomePage();
+
+            //app.Run(context =>
+            //{
+            //    context.Response.ContentType = "text/plain";
+            //    return context.Response.WriteAsync("Hello");
+            //});
         }
     }
 }
