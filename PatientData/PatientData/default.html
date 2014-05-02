@@ -25,14 +25,32 @@
     
     <script>
         $(function () {
-
-            var url = 'http://localhost:61923/api/patients';
+            
+            var accessToken = '';
 
             // handler for showing json that's returned from server
             var showResponse = function(object) { $('#output').text(JSON.stringify(object, null, 4)); };
 
+            // handler for a successful login
+            var saveAccessToken = function(data) {
+                accessToken = data.access_token;
+            };
+
+            var getHeaders = function () {
+                if (accessToken) {
+                    return { "Authorization": "Bearer " + accessToken };
+                };
+            };
+
             // perform get
-            var getPatients = function() { $.get(url).always(showResponse); return false; };
+            var getPatients = function () {
+                var url = 'http://localhost:61923/api/patients';
+                $.ajax(url, {
+                    type: 'GET',
+                    headers: getHeaders()
+            }).always(showResponse); return false;
+            };
+
 
             // register new user (post)
             var register = function() {
@@ -43,13 +61,17 @@
                 return false;
             };
 
+            // post to /Token endpoint, supplying the required grant_type of "password".
+            // On success, save the access token.
             var login = function () {
                 var url = '/Token';
                 var data = $('#userData').serialize();
-
+                
                 data = data + "&grant_type=password";
 
-                $.post(url, data).always(showResponse);
+                $.post(url, data)
+                    .success(saveAccessToken)
+                    .always(showResponse);
 
                 return false;
             };
