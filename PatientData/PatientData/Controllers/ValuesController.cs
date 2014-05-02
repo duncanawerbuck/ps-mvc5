@@ -10,6 +10,10 @@ namespace PatientData.Controllers
     public class ValuesController : ApiController
     {
         // GET api/values
+        /// <summary>
+        /// Some SAMPLE documentation.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
