@@ -12,6 +12,7 @@
         <input type="password" name="password" placeholder="Password" />
         <input type="password" name="confirmPassword" placeholder="Password" />
         <input type="submit" id="register" value="Register" />
+        <input type="submit" id="login" value="Login" />
     </form>
 
     <button id="getPatients">Get Patients</button>
@@ -27,14 +28,13 @@
 
             var url = 'http://localhost:61923/api/patients';
 
+            // handler for showing json that's returned from server
             var showResponse = function(object) { $('#output').text(JSON.stringify(object, null, 4)); };
 
-            var getPatients = function() {
+            // perform get
+            var getPatients = function() { $.get(url).always(showResponse); return false; };
 
-                $.get(url).always(showResponse);
-
-                return false;
-            };
+            // register new user (post)
             var register = function() {
                 var url = '/api/account/register';
                 var data = $('#userData').serialize();
@@ -43,8 +43,20 @@
                 return false;
             };
 
+            var login = function () {
+                var url = '/Token';
+                var data = $('#userData').serialize();
+
+                data = data + "&grant_type=password";
+
+                $.post(url, data).always(showResponse);
+
+                return false;
+            };
+
             $('#register').click(register);
             $('#getPatients').click(getPatients);
+            $('#login').click(login);
 
         });
     </script>
