@@ -9,6 +9,7 @@ using PatientData.Models;
 
 namespace PatientData.Controllers
 {
+    [Authorize]
     public class PatientsController : ApiController
     {
         private MongoCollection<Patient> _patients; 
