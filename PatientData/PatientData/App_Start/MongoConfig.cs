@@ -35,6 +35,8 @@ namespace PatientData
                         Medications = new List<Medication>() {new Medication() {Name = "Roaccutane", Doses = 2}}
                     }
                 };
+
+                patients.InsertBatch(data);
             }
         }
     }
