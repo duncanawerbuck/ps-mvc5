@@ -192,16 +192,24 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="DataContexts\BookMigrations\201405061002348_InitialCreate.cs" />
-    <Compile Include="DataContexts\BookMigrations\201405061002348_InitialCreate.Designer.cs">
-      <DependentUpon>201405061002348_InitialCreate.cs</DependentUpon>
+    <Compile Include="DataContexts\BookMigrations\201405061203087_InitialCreate.cs" />
+    <Compile Include="DataContexts\BookMigrations\201405061203087_InitialCreate.Designer.cs">
+      <DependentUpon>201405061203087_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataContexts\BookMigrations\201405061204356_DefaultSchema.cs" />
+    <Compile Include="DataContexts\BookMigrations\201405061204356_DefaultSchema.Designer.cs">
+      <DependentUpon>201405061204356_DefaultSchema.cs</DependentUpon>
     </Compile>
     <Compile Include="DataContexts\BookMigrations\Configuration.cs" />
     <Compile Include="DataContexts\BooksDb.cs" />
     <Compile Include="DataContexts\IdentityDb.cs" />
-    <Compile Include="DataContexts\IdentityMigrations\201405061003273_InitialCreate.cs" />
-    <Compile Include="DataContexts\IdentityMigrations\201405061003273_InitialCreate.Designer.cs">
-      <DependentUpon>201405061003273_InitialCreate.cs</DependentUpon>
+    <Compile Include="DataContexts\IdentityMigrations\201405061202538_InitialCreate.cs" />
+    <Compile Include="DataContexts\IdentityMigrations\201405061202538_InitialCreate.Designer.cs">
+      <DependentUpon>201405061202538_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataContexts\IdentityMigrations\201405061204243_DefaultSchema.cs" />
+    <Compile Include="DataContexts\IdentityMigrations\201405061204243_DefaultSchema.Designer.cs">
+      <DependentUpon>201405061204243_DefaultSchema.cs</DependentUpon>
     </Compile>
     <Compile Include="DataContexts\IdentityMigrations\Configuration.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
@@ -288,11 +296,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DataContexts\BookMigrations\201405061002348_InitialCreate.resx">
-      <DependentUpon>201405061002348_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="DataContexts\BookMigrations\201405061203087_InitialCreate.resx">
+      <DependentUpon>201405061203087_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DataContexts\IdentityMigrations\201405061003273_InitialCreate.resx">
-      <DependentUpon>201405061003273_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="DataContexts\BookMigrations\201405061204356_DefaultSchema.resx">
+      <DependentUpon>201405061204356_DefaultSchema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataContexts\IdentityMigrations\201405061202538_InitialCreate.resx">
+      <DependentUpon>201405061202538_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataContexts\IdentityMigrations\201405061204243_DefaultSchema.resx">
+      <DependentUpon>201405061204243_DefaultSchema.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

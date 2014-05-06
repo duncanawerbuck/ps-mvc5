@@ -13,7 +13,7 @@ namespace Books.Web.DataContexts.IdentityMigrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201405061003273_InitialCreate"; }
+            get { return "201405061202538_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source
