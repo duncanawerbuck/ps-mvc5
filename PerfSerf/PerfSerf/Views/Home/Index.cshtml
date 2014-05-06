@@ -12,14 +12,22 @@
     <div class="col-md-4">
         <div data-bind="foreach:messages">
             <div data-bind="text:$data"></div>
-        </div>
+        </div> 
+    </div>
+</div>
+
+<div class="row" data-bind="foreach:counters">
+    <div class="col-md-12">
+        <h2 data-bind="text:name"></h2>
+        <canvas width="800" height="100" data-bind="attr:{'id': name}"></canvas>
     </div>
 </div>
 
 @section scripts
 {
-    <script src="~/Scripts/jquery.signalR-2.0.3.min.js"></script>
+<script src="~/Scripts/jquery.signalR-2.0.3.js"></script>
     <script src="~/SignalR/hubs"></script>
     <script src="~/Scripts/knockout-2.2.0.js"></script>
+    <script src="~/Scripts/smoothie.js"></script>
     <script src="~/Scripts/perfSurf.js"></script>
 }

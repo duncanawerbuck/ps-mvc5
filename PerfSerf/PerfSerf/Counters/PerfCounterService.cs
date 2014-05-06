@@ -19,7 +19,9 @@ namespace PerfSerf.Counters
 
         public dynamic GetResults()
         {
-            return _counters.Select(c => new {name = c.Name, value = c.Value});
+            var result =_counters.Select(c => new {name = c.Name, value = c.Value});
+
+            return result;
         }
 
         private List<PerfCounterWrapper> _counters;
