@@ -24,13 +24,13 @@ namespace Books.Web.Controllers
         }
 
         // GET: Books/Details/5
-        public ActionResult Details(int? id)
+        public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Book book = db.Book.Find(id);
+            Book book = await db.Book.FindAsync(id);
             if (book == null)
             {
                 return HttpNotFound();
@@ -49,12 +49,12 @@ namespace Books.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Category")] Book book)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Category")] Book book)
         {
             if (ModelState.IsValid)
             {
                 db.Book.Add(book);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
