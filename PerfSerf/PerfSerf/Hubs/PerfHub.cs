@@ -8,9 +8,11 @@ namespace PerfSerf.Hubs
 {
     public class PerfHub : Hub
     {
-        public void Hello()
+        public void Send(string message)
         {
-            Clients.All.hello("Hi!");
+            var userName = Context.User.Identity.Name;
+
+            Clients.All.newMessage(userName + " says " + message);
         }
     }
 }
