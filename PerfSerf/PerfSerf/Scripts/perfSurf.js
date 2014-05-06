@@ -18,7 +18,7 @@
         sendMessage: function () {
             var self = this;
 
-            perfHub.serverSentEvents.send(self.message());
+            perfHub.server.send(self.message());
             self.message("");
         },
 
