@@ -14,5 +14,7 @@ namespace Books.Entities
         [Required]
         [StringLength(255)]
         public string Title { get; set; }
+
+        public Genre Category { get; set; }
     }
 }
