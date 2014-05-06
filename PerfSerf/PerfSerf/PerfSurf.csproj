@@ -162,7 +162,10 @@
     <Content Include="Scripts\jquery-2.1.0.min.js" />
     <Content Include="Scripts\jquery.signalR-2.0.3.js" />
     <Content Include="Scripts\jquery.signalR-2.0.3.min.js" />
+    <Content Include="Scripts\knockout-2.2.0.debug.js" />
+    <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.7.2.js" />
+    <Content Include="Scripts\perfSurf.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
